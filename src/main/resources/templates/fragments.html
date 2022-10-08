@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
-<head th:fragment="head">
+<head>
     <meta charset="UTF-8"/>
     <title>Coding Events</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 
-<nav th:fragment="header">
-    <h1 th:text="${title}">Coding Events</h1>
-    <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
-    </ul>
-</nav>
-
+<th:block th:fragment="hourOfCodeAddress">
+    <td>123 Main St.</td>
+    <td><img src="https://airandspace.si.edu/sites/default/files/images/events/11723h_2.jpg"></td>
+</th:block>
+<th:block th:fragment="strangeLoopAddress">
+    <td>4098 5th St.</td>
+    <td><img th:src="@{/images/strange_loop_logo_final_color_no_year_square.jpg}"></td>
+</th:block>
+<th:block th:fragment="cesAddress">
+    <td>1 Major St.</td>
+    <td><img th:src="@{/images/ces-logo.png}"></td>
+</th:block>
+<!--<nav th:fragment="header">-->
+<!--    <h1 th:text="${title}">Coding Events</h1>-->
+<!--    <ul class="nav">-->
+<!--        <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>-->
+<!--        <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>-->
+<!--    </ul>-->
+<!--</nav>-->
 </body>
 </html>
+<!-- th:fragment="head"-->

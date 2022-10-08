@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<head>
+    <meta charset="UTF-8"/>
+    <title>th:text="${title}</title>
+    <link th:href="@{styles.css}" rel="stylesheet"/>
+</head>
+<body>
 
 <h1>All Events</h1>
-
-<header th:replace="fragments :: header"></header>
-
-
-<p th:unless="${events} and ${events.size()}">No Events!</p>
-<table class="table table-striped">
-    <thead>
+<!--<header th:replace="fragments :: header"></header>-->
+<!--<p th:unless="${events} and ${events.size()}">No Events!</p>-->
+<table class="center">
+    <tr>
+        <th>Event Name</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Pictures</th>
+    </tr>
+    <th:block th:each="event : ${events}">
         <tr>
-            <th>Name</th>
+            <td th:text="${event.key}"></td>
+             <td th:text="${event.value}"></td>
+            <th:block th:if='${event.key.equals("CES")}'>
+                <th:block th:replace="fragments :: cesAddress"></th:block>
+            </th:block>
+            <th:block th:if='${event.key.equals("Hour of Code")}'>
+                <th:block th:replace="fragments :: hourOfCodeAddress"></th:block>
+            </th:block>
+            <th:block th:if='${event.key.equals("Strange Loop")}'>
+                <th:block th:replace="fragments :: strangeLoopAddress"></th:block>
+            </th:block>
         </tr>
-    </thead>
-    <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
-    </tr>>
+    </th:block>
 </table>
-
 </body>
 </html>
+
+<!--<th:block th: if='${event.key.equals("CES")}'>
+            <td th:replace="fragments :: cesAddress"></td>
+        </th:block>
+        <th:block th: if='${event.key.equals("Hour of Code")}'>
+            <td th:replace="fragments :: hourOfCodeAddress"></td>
+        </th:block>
+        <th:block th: if='${event.key.equals("Strange Loop")}'>
+            <td th:replace="fragments :: strangeLoopAddress"></td>
+        </th:block>-->
 
