@@ -24,16 +24,34 @@ public class EventController {
         return "events/index";
     }
 
-//    lives at /events/create
+    //    lives at /events/create
     @GetMapping("create")
-    public String renderCreateEventsForm(){
+    public String renderCreateEventsForm() {
         return "events/create";
     }
+
     @PostMapping("create")
     public String createEvent(@RequestParam String eventName,
-                              @RequestParam String eventDescription){
+                              @RequestParam String eventDescription) {
         EventData.add(new Event(eventName, eventDescription));
         return "redirect:";
 //        redirects to the displayAllEvents
+    }
+
+    @GetMapping("delete")
+    public String displayDeleteEventForm(Model model) {
+        model.addAttribute("title", "Delete Events");
+        model.addAttribute("events", EventData.getAll());
+        return "events/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                EventData.remove(id);
+            }
+        }
+        return "redirect:";
     }
 }
