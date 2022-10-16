@@ -17,27 +17,35 @@ public class Event {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    @NotBlank(message="Location cannot be left blank.")
+    @NotNull(message="Location is required.")
+    @NotBlank(message="Location is required.")
     private String location;
 
     @AssertTrue(message="You must register to attend.")
     private Boolean attendeeRegistered = true;
 
+//    @Size(min=1, message = "At least one attendee is required.")
+//    @Min(value = 1, message = "At least one attendee is required.")
     @Positive(message = "The number of attendees must be one or more.")
-    private int numberOfAttendees;
+    private Integer numberOfAttendees;
 
-    @NotBlank(message = "Please answer true of false if you need valet parking.")
-    private boolean needParkingValet;
+    @NotNull(message = "Must have # of food courses between 1 and 3")
+    @Min(value=1, message = "Must have # of food courses between 1 and 3")
+    @Max(value=3, message = "Must have # of food courses between 1 and 3")
+    private Integer numOfFoodCourses;
+
+//    @NotBlank(message = "Please answer true of false if you need valet parking.")
+//    private boolean needParkingValet;
 
     public Event(String name, String description, String contactEmail,
-                 String location, Boolean attendeeRegistered, int numberOfAttendees, boolean needParkingValet) {
+                 String location, Boolean attendeeRegistered, Integer numberOfAttendees, boolean needParkingValet) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.location = location;
         this.attendeeRegistered = attendeeRegistered;
         this.numberOfAttendees = numberOfAttendees;
-        this.needParkingValet = needParkingValet;
+//        this.needParkingValet = needParkingValet;
         this.id = nextId;
         nextId++;
     }
@@ -86,20 +94,29 @@ public class Event {
         this.attendeeRegistered = attendeeRegistered;
     }
 
-    public int getNumberOfAttendees() {
+    public Integer getNumberOfAttendees() {
         return numberOfAttendees;
     }
 
-    public void setNumberOfAttendees(int numberOfAttendees) {
+    public void setNumberOfAttendees(Integer numberOfAttendees) {
         this.numberOfAttendees = numberOfAttendees;
     }
 
-    public boolean isNeedParkingValet() {
-        return needParkingValet;
+//    public boolean isNeedParkingValet() {
+//        return needParkingValet;
+//    }
+//
+//    public void setNeedParkingValet(boolean needParkingValet) {
+//        this.needParkingValet = needParkingValet;
+//    }
+
+
+    public Integer getNumOfFoodCourses() {
+        return numOfFoodCourses;
     }
 
-    public void setNeedParkingValet(boolean needParkingValet) {
-        this.needParkingValet = needParkingValet;
+    public void setNumOfFoodCourses(Integer numOfFoodCourses) {
+        this.numOfFoodCourses = numOfFoodCourses;
     }
 
     public int getId() {
