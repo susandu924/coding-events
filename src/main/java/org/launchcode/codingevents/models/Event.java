@@ -9,8 +9,13 @@ public class Event {
     private String description;
 
     public Event(String name, String description) {
+        this();
         this.name = name;
         this.description = description;
+
+    }
+
+    public Event(){
         this.id = nextId;
         nextId++;
     }
