@@ -2,6 +2,7 @@ package org.launchcode.codingevents.controllers;
 
 import org.launchcode.codingevents.data.EventData;
 import org.launchcode.codingevents.models.Event;
+import org.launchcode.codingevents.models.EventType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -26,9 +27,12 @@ public class EventController {
 
     //    lives at /events/create
     @GetMapping("create")
-    public String displayCreateEventsForm(Model model) {
+    public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
+        model.addAttribute("types", EventType.values());
+//        returns an array of the 4 different values that exist for the enum EventType
+//        then can use template to render a dropdown
         return "events/create";
     }
 

@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
 <header th:replace="fragments :: header"></header>
 
-
-<form method="post" action="/events/create">
+<form method="post">
     <div class="form-group">
         <label>Name
-            <input type="text" name="name" class="form-control">
+            <input th:field="${event.name}" class="form-control">
         </label>
+        <p class="error" th:errors="${event.name}"></p>
     </div>
     <div class="form-group">
         <label>Description
-            <input type="text" name="description" class="form-control">
+            <input th:field="${event.description}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.description}"></p>
+    </div>
+    <div class="form-group">
+        <label>Contact Email
+            <input th:field="${event.contactEmail}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.contactEmail}"></p>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>Type
+                <!--select makes a drop-down event.type creates the name property correctly-->
+            <select th:field="${event.type}">
+                <!--id and name set here in field event.type-->
+                <option th:each="type : ${types}"
+                        th:value="${type}"
+                        th:text="${type.displayName}"
+                ></option>
+                <!-- loops through array of enum values-->
+                <!-- creates an option element value gets submitted to user,
+                text is what gets displayed to the user-->
+            </select>
         </label>
     </div>
+    <br>
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-success">
     </div>

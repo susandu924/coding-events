@@ -4,7 +4,7 @@ public enum EventType {
 
     CONFERENCE("Conference"),
     MEETUP("Meetup"),
-    WORKSHOP("Meetup"),
+    WORKSHOP("Workshop"),
     SOCIAL("Social");
 
     private final String displayName;
