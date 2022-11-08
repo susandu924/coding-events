@@ -16,11 +16,9 @@ import java.util.Objects;
 // Event objects can be stored outside of application in a database. Tell Spring boot which field in our class primary key. @Id tells app
 //    this is a primary key. @GeneratedValue says it wants the database to generate the values of our primary key.
 @Entity
-public class Event {
+public class Event extends AbstractEntity{
 
-    @Id
-    @GeneratedValue
-    private int id;
+
 
 
     @NotBlank(message = "Name is required")
@@ -78,25 +76,12 @@ public class Event {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     @Override
     public String toString() {
         return name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
