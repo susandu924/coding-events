@@ -1,5 +1,8 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -8,10 +11,17 @@ import java.util.Objects;
 /**
  * Created by Chris Bay
  */
+
+//how we want instances of our class to be stored in the database. @Entity tells Spring boot that this is a persistent class object
+// Event objects can be stored outside of application in a database. Tell Spring boot which field in our class primary key. @Id tells app
+//    this is a primary key. @GeneratedValue says it wants the database to generate the values of our primary key.
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId;
+
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
@@ -27,17 +37,14 @@ public class Event {
     private EventType type;
 
     public Event(String name, String description, String contactEmail, EventType type) {
-        this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.type = type;
     }
 
-    public Event() {
-        this.id = nextId;
-        nextId++;
-    }
+    public Event() {}
+//    always need an empty constructor within a persistent class.
 
     public String getName() {
         return name;
