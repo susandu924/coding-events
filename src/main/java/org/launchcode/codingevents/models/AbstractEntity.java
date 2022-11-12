@@ -16,6 +16,8 @@ public abstract class AbstractEntity {
         return id;
     }
 
+
+//    equals method casts the input parameter(Object o) to the type of class that we are in AbstractEntity
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

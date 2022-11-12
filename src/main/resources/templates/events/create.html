@@ -26,18 +26,19 @@
     </div>
     <br>
     <div class="form-group">
-        <label>Type
+        <label>Category
                 <!--select makes a drop-down event.type creates the name property correctly-->
-            <select th:field="${event.type}">
+            <select th:field="${event.eventCategory}">
                 <!--id and name set here in field event.type-->
-                <option th:each="type : ${types}"
-                        th:value="${type}"
-                        th:text="${type.displayName}"
+                <option th:each="eventCategory : ${categories}"
+                        th:value="${eventCategory.id}"
+                        th:text="${eventCategory.name}"
                 ></option>
                 <!-- loops through array of enum values-->
                 <!-- creates an option element value gets submitted to user,
                 text is what gets displayed to the user-->
             </select>
+            <p class="error" th:errors="${event.eventCategory}"></p>
         </label>
     </div>
     <br>
