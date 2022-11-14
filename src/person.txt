@@ -1,0 +1,13 @@
+Person Class:
+
+Fields:
+- Name - String
+- Email - String
+- Password - String
+- List of Events - List<Event> : Many to Many
+- FavoriteCategory - EventCategory : Many to One (Person can only have One favorite category)
+
+Methods:
+- Getters andSetters
+- Get back Favorite Events (returns all events that have to do with their favorite category)
+
