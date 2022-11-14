@@ -12,12 +12,7 @@
     </tr>
     </thead>
     <tr th:each="category : ${categories}">
-        <td th:text="${category.name}"></a></td>
-        <!--        <td>-->
-        <!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
-        <!--        </td>-->
-        <!--        uses getName method-->
-        <!--        calls getter on object event.description-->
+        <td><a th:text="${category.name}" th:href="'/events?categoryId=' + ${category.id}"></a></td>
     </tr>
 </table>
 
