@@ -10,4 +10,5 @@ Fields:
 Methods:
 - Getters andSetters
 - Get back Favorite Events (returns all events that have to do with their favorite category)
+-
 
